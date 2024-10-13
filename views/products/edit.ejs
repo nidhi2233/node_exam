@@ -1,0 +1,13 @@
+<h1>Edit Product</h1>
+<form action="/products/edit/<%= product._id %>" method="post">
+  <input type="text" name="name" value="<%= product.name %>">
+  <input type="number" name="price" value="<%= product.price %>">
+  <select name="category">
+    <% categories.forEach((category) => { %>
+      <option value="<%= category._id %>" <%= (product.category._id.equals(category._id)) ? 'selected' : '' %>>
+        <%= category.name %>
+      </option>
+    <% }); %>
+  </select>
+  <button type="submit">Update</button>
+</form>

@@ -1,0 +1,18 @@
+<h1>Products</h1>
+<ul>
+  <% if (products.length > 0) { %>
+    <% products.forEach((product) => { %>
+      <li>
+        <%= product.name %> (<%= product.category ? product.category.name : 'No category' %>)
+        <a href="/products/edit/<%= product._id %>">Edit</a>
+        <form action="/products/<%= product._id %>?_method=DELETE" method="post" style="display:inline;">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  <% } else { %>
+    <li>No products found</li>
+  <% } %>
+</ul>
+<a href="/products/new">New Product</a>
